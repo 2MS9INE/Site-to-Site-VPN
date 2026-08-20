@@ -18,7 +18,7 @@ Simulate two branch offices connected over a WAN link, with an IPsec site-to-sit
 
 ## 2. Diagram
 
-![Topology](Topology.SVG)
+![Topology](Topology.svg)
 
 **Layout:** `PC-A — Switch-A — Router-A === (WAN link) === Router-B — Switch-B — PC-B`
 
