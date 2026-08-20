@@ -1,4 +1,4 @@
-# Project 2 — Site-to-Site VPN
+# Site-to-Site VPN
 
 **Tools used:** GNS3, Cisco IOSv, VPCS
 **Skills demonstrated:** IPsec (IKEv1) site-to-site VPN configuration, crypto ACLs, static routing, VPN troubleshooting
@@ -18,7 +18,7 @@ Simulate two branch offices connected over a WAN link, with an IPsec site-to-sit
 
 ## 2. Diagram
 
-![Topology](topology.png)
+![Topology](Topology.SVG)
 
 **Layout:** `PC-A — Switch-A — Router-A === (WAN link) === Router-B — Switch-B — PC-B`
 
