@@ -1,0 +1,39 @@
+! Router-A - Project 2: Site-to-Site VPN
+! Branch-A router - LAN 10.1.1.0/24, WAN 203.0.113.1
+
+hostname Router-A
+
+crypto isakmp policy 10
+ encryption aes 256
+ hash sha256
+ authentication pre-share
+ group 14
+ lifetime 86400
+
+crypto isakmp key VpnSecretKey123 address 203.0.113.2
+
+crypto ipsec transform-set TS esp-aes 256 esp-sha256-hmac
+ mode tunnel
+
+ip access-list extended VPN-TRAFFIC
+ permit ip 10.1.1.0 0.0.0.255 10.2.2.0 0.0.0.255
+
+crypto map VPNMAP 10 ipsec-isakmp
+ set peer 203.0.113.2
+ set transform-set TS
+ match address VPN-TRAFFIC
+
+interface GigabitEthernet0/1
+ description LAN link to Switch-A
+ ip address 10.1.1.1 255.255.255.0
+ no shutdown
+
+interface GigabitEthernet0/0
+ description WAN link to Router-B
+ ip address 203.0.113.1 255.255.255.252
+ crypto map VPNMAP
+ no shutdown
+
+ip route 10.2.2.0 255.255.255.0 203.0.113.2
+
+end
